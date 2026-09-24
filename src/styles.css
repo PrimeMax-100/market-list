@@ -1,0 +1,179 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * Market List design system — warm editorial.
+ * Fraunces (serif display) + Source Sans 3 (body), loaded via <link> in __root.
+ * All colours live here as oklch tokens; components use semantic utilities only.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--foreground);
+  --color-popover: var(--card);
+  --color-popover-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* app-specific semantic colours */
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-subtle: var(--subtle);
+  --color-faint: var(--faint);
+  --color-line-strong: var(--line-strong);
+  --color-track: var(--track);
+  --color-chip: var(--chip);
+  --color-near: var(--near);
+  --color-alert: var(--destructive);
+  --color-alert-bg: var(--alert-bg);
+  --color-alert-border: var(--alert-border);
+  --color-alert-foreground: var(--alert-foreground);
+  --color-sage: var(--sage);
+  --color-sage-bright: var(--sage-bright);
+  --color-tour-scrim: var(--tour-scrim);
+
+  --color-cat-produce: var(--cat-produce);
+  --color-cat-pantry: var(--cat-pantry);
+  --color-cat-toiletries: var(--cat-toiletries);
+  --color-cat-household: var(--cat-household);
+  --color-cat-other: var(--cat-other);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.972 0.008 85);
+  --foreground: oklch(0.245 0.011 70);
+  --card: oklch(1 0 0);
+
+  --primary: oklch(0.52 0.062 152);
+  --primary-foreground: oklch(0.972 0.008 85);
+
+  --secondary: oklch(0.93 0.014 85);
+  --muted: oklch(0.945 0.016 90);
+  --muted-foreground: oklch(0.575 0.021 80);
+  --accent: oklch(0.945 0.016 90);
+
+  --destructive: oklch(0.51 0.145 33);
+
+  --border: oklch(0.906 0.014 85);
+  --input: oklch(0.845 0.021 85);
+  --ring: oklch(0.52 0.062 152);
+
+  --ink: oklch(0.245 0.011 70);
+  --ink-foreground: oklch(0.972 0.008 85);
+  --ink-muted: oklch(0.74 0.017 85);
+
+  --subtle: oklch(0.46 0.018 78);
+  --faint: oklch(0.685 0.017 80);
+  --line-strong: oklch(0.78 0.033 85);
+  --track: oklch(0.93 0.014 85);
+  --chip: oklch(0.945 0.016 90);
+  --near: oklch(0.65 0.117 78);
+
+  --alert-bg: oklch(0.945 0.019 40);
+  --alert-border: oklch(0.85 0.043 35);
+  --alert-foreground: oklch(0.39 0.1 35);
+
+  --sage: oklch(0.66 0.03 145);
+  --sage-bright: oklch(0.78 0.07 140);
+  --tour-scrim: oklch(0.16 0.01 70 / 0.72);
+
+  --cat-produce: oklch(0.52 0.062 152);
+  --cat-pantry: oklch(0.6 0.11 65);
+  --cat-toiletries: oklch(0.5 0.09 305);
+  --cat-household: oklch(0.5 0.07 240);
+  --cat-other: oklch(0.55 0.03 65);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  input,
+  select,
+  button {
+    font-family: inherit;
+  }
+
+  input:focus-visible,
+  select:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  ::placeholder {
+    color: var(--color-faint);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+/* Shared surfaces */
+@utility card-warm {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+}
+
+@utility field {
+  width: 100%;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-input);
+  border-radius: 8px;
+  padding: 0.625rem 0.75rem;
+  font-size: 15px;
+  color: var(--color-foreground);
+  min-height: 44px;
+}
+
+@utility tour-spotlight {
+  box-shadow: 0 0 0 9999px var(--color-tour-scrim);
+}
