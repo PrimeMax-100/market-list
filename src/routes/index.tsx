@@ -101,8 +101,8 @@ function MarketListView() {
   const showEstimates = list.itemsOverExpected.length > 0 || list.itemsUnderExpected.length > 0;
 
   return (
-    <main className="flex h-dvh flex-col overflow-hidden bg-background">
-      <div className="mx-auto flex min-h-0 w-full max-w-[640px] flex-1 flex-col overflow-hidden px-[18px] pt-7">
+    <main className="min-h-dvh bg-background">
+      <div className="mx-auto w-full max-w-[640px] px-[18px] pb-6 pt-7">
         <header className="mb-[22px] grid shrink-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2.5">
           <span className="grid size-[34px] shrink-0 place-items-center rounded-lg bg-primary">
             <ShoppingBag size={18} className="text-primary-foreground" />
@@ -214,10 +214,7 @@ function MarketListView() {
           <AddItemForm lookupPrice={list.lookupPrice} onAdd={list.addItem} />
         </div>
 
-        <div
-          data-tour="list"
-          className={`min-h-0 flex-1 ${list.items.length > 0 ? "overflow-y-auto pb-24" : "overflow-hidden"}`}
-        >
+        <div data-tour="list" className={list.items.length > 0 ? "pb-24" : ""}>
           {list.items.length === 0 && (
             <div className="px-5 py-10 text-center text-faint">
               <ShoppingBag size={32} className="mx-auto mb-2.5 opacity-50" />
